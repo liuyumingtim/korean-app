@@ -1,0 +1,11 @@
+{
+  "name": "한 걸음 — 韓語學習",
+  "short_name": "한 걸음",
+  "description": "給華語學習者的韓文入門學習 App",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f8f6f1",
+  "theme_color": "#17324d",
+  "lang": "zh-Hant",
+  "icons": []
+}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17324d">
+  <meta name="description" content="給華語學習者的韓文入門學習 App">
+  <title>한 걸음 — 韓語學習</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark"><span>한</span><div><strong>한 걸음</strong><small>一步一步學韓文</small></div></div>
+      <button id="sound-toggle" class="icon-button" type="button" aria-label="切換音效">🔊</button>
+    </header>
+
+    <section id="screen-home" class="screen active">
+      <div class="hero">
+        <div class="hero-copy"><p class="eyebrow">TODAY'S KOREAN</p><h1>今天也學一點，<br><em>한 걸음</em> 就好。</h1><p>從生活中最常用的韓文開始，建立你的第一個句子。</p></div>
+        <div class="hero-hangul" aria-hidden="true"><span>안</span><span>녕</span></div>
+      </div>
+      <div class="stats-grid">
+        <article class="stat-card accent"><span>今日進度</span><strong id="today-progress">0%</strong><small id="today-progress-label">開始第一張字卡</small><div class="progress-track"><i id="today-progress-bar"></i></div></article>
+        <article class="stat-card"><span>連續學習</span><strong><b id="streak-count">0</b> 天 <span>🔥</span></strong><small>每天一小步，累積就會到</small></article>
+      </div>
+      <section class="next-card"><div><p class="eyebrow">NEXT STEP</p><h2>完成今天的字卡</h2><p id="next-summary">準備好認識幾個實用的韓文單字了嗎？</p></div><button id="start-study" class="primary-button" type="button">開始學習 <span>→</span></button></section>
+      <details class="audio-settings"><summary>🔊 語音設定：選擇手機的韓語聲音</summary><div class="audio-settings-grid"><label>韓語語音<select id="voice-select"><option value="">自動選擇最佳韓語語音</option></select></label><label>播放速度<select id="rate-select"><option value="0.65">慢速</option><option value="0.78" selected>學習速度</option><option value="0.9">自然速度</option><option value="1">一般速度</option></select></label></div><p id="voice-status">正在讀取裝置的韓語語音…</p><button id="voice-test" class="secondary-button" type="button">播放測試：안녕하세요</button></details>
+      <section class="section-block"><div class="section-heading"><div><p class="eyebrow">LEARNING MAP</p><h2>學習地圖</h2></div><span id="mastery-label">0 / 0 已掌握</span></div><div class="map-grid"><button class="map-tile" data-screen="words"><span class="tile-icon blue">가</span><strong>核心單字</strong><small>生活最常用</small></button><button class="map-tile" data-screen="alphabet"><span class="tile-icon coral">한</span><strong>諺文字母</strong><small>讀懂韓文的起點</small></button><button class="map-tile" data-screen="grammar"><span class="tile-icon gold">은</span><strong>初級文法</strong><small>助詞與句型</small></button><button class="map-tile" data-screen="patterns"><span class="tile-icon mint">요</span><strong>實用句型</strong><small>直接開口說</small></button></div></section>
+    </section>
+
+    <section id="screen-study" class="screen">
+      <div class="study-top"><button id="exit-study" class="text-button" type="button">← 返回</button><span id="study-counter">1 / 10</span><button id="study-sound" class="icon-button" type="button">🔊</button></div>
+      <div class="study-progress"><i id="study-progress-bar"></i></div>
+      <div id="flashcard" class="flashcard"><div class="card-topline"><span id="card-category">問候</span><button id="star-card" class="star-button" type="button">☆</button></div><div class="card-word" id="card-word">안녕하세요</div><div class="card-roman" id="card-roman">annyeonghaseyo</div><button id="reveal-card" class="reveal-button" type="button">點一下看中文意思</button><div id="card-answer" class="card-answer hidden"><strong id="card-meaning">你好</strong><span id="card-phonetic">安妞哈誰唷</span><div id="card-example" class="example-box"></div></div></div>
+      <div id="rating-actions" class="rating-actions hidden"><p>你記得這張嗎？</p><div class="rating-grid"><button class="rating forgot" data-rating="forgot" type="button"><b>再看一次</b><small>還不熟</small></button><button class="rating hard" data-rating="hard" type="button"><b>有點難</b><small>明天再複習</small></button><button class="rating easy" data-rating="easy" type="button"><b>記住了</b><small>下次延後</small></button></div></div>
+      <div id="study-complete" class="completion hidden"><div class="completion-icon">✦</div><p class="eyebrow">SESSION COMPLETE</p><h1>做得很好！</h1><p id="completion-copy">今天的練習完成了。</p><button id="back-home" class="primary-button" type="button">回到首頁 <span>→</span></button></div>
+    </section>
+
+    <section id="screen-words" class="screen"><div class="page-heading"><p class="eyebrow">VOCABULARY</p><h1>核心單字</h1><p>點擊喇叭，聽聽韓國人怎麼說。</p><small class="page-hint">「中文近似音」只當記憶提示；真正發音請以韓語 TTS 和規則練習為準。</small></div><div class="search-wrap"><span>⌕</span><input id="word-search" type="search" placeholder="搜尋韓文或中文…"></div><div id="category-tabs" class="chip-row"></div><div id="word-list" class="word-list"></div></section>
+
+    <section id="screen-alphabet" class="screen"><div class="page-heading"><p class="eyebrow">HANGUL 101</p><h1>諺文字母</h1><p>韓文不是一個個字母排開，而是組成一個個音節方塊。</p></div><div class="alphabet-hero"><div><span class="eyebrow">音節組字</span><strong>ㅎ + ㅏ + ㄴ = 한</strong><p>初聲 + 中聲 +（可選）終聲</p></div><button class="round-play" data-speak="한" type="button">▶</button></div><p class="alphabet-hint">表格中的 g/k、d/t 是羅馬字標記，不是要照英文硬讀；初學時先聽喇叭，再觀察它在字首或 받침 的位置。</p><div id="alphabet-list" class="alphabet-list"></div><div class="rule-card"><span class="tile-icon gold">받</span><div><strong>받침｜收尾音</strong><p>字尾不是每個子音都能直接保留原音；一般音節末會收斂成七個代表音，遇到母音、ㅎ、ㄴ／ㅁ 時還可能連音或變音。</p></div></div></section>
+
+    <section id="screen-grammar" class="screen"><div class="page-heading"><p class="eyebrow">BEGINNER GRAMMAR</p><h1>初級文法</h1><p>先掌握韓文句子的骨架，再慢慢加上細節。</p></div><div class="grammar-banner"><span>主詞</span><b>→</b><span>受詞</span><b>→</b><span>動詞</span><small>韓文基本語序：SOV</small></div><div id="grammar-list" class="grammar-list"></div></section>
+
+    <section id="screen-patterns" class="screen"><div class="page-heading"><p class="eyebrow">USEFUL PATTERNS</p><h1>實用句型</h1><p>把剛學的單字放進句子裡，馬上就能用。</p></div><div id="pattern-list" class="pattern-list"></div></section>
+
+    <nav class="bottom-nav" aria-label="主要導覽"><button class="nav-item active" data-screen="home" type="button"><span>⌂</span>首頁</button><button class="nav-item" data-screen="words" type="button"><span>가</span>單字</button><button class="nav-item" data-screen="alphabet" type="button"><span>한</span>字母</button><button class="nav-item" data-screen="grammar" type="button"><span>은</span>文法</button><button class="nav-item" data-screen="patterns" type="button"><span>요</span>句型</button></nav>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
