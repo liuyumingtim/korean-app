@@ -12,6 +12,8 @@ python3 -m http.server 8000
 
 再開啟 <http://localhost:8000>。使用 HTTP 伺服器是為了讓 Service Worker 與 PWA 安裝功能正常運作。
 
+若只是要在電腦快速查看，也可以直接雙擊 `index.html`；目前按鈕與課程切換仍可使用，但 PWA 快取與安裝功能要用上面的 HTTP 方式。
+
 ## 手機使用方式
 
 目前用 `localhost` 只能在開發電腦上預覽；手機若要在外面直接開啟、保存進度並安裝到主畫面，需要把這個靜態資料夾放到 HTTPS 網址。GitHub Pages、Cloudflare Pages、Netlify 都可以，GitHub 不是唯一選項。
